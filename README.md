@@ -7,7 +7,7 @@ Implementation of Randomly Rotating Simplex Coding (RRSC) algorithm by the autho
 
 ## Instructions
 
-Set which parameter to sweep through via `vary`, number of runs to repeat the experiment with `num_itr`, list of dimensions $d$ to repeat with `d_list`, list of epsilon $\varepsilon$ to repeat with `eps_list` when calling `rrsc_comparison()` in `main.py`. 
+Set which parameter to sweep through via `vary`, number of runs to repeat the experiment with `num_itr`, list of dimensions $d$ with `d_list`, list of epsilons $\varepsilon$ with `eps_list` when calling `rrsc_comparison()` in `main.py`. 
 
 To reproduce the plots in the paper, run `run.ipynb`. 
 
