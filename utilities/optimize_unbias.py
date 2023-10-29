@@ -1,56 +1,10 @@
-# Copyright 2021, Google LLC.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-"""Code to optimize & un-bias miracle.
-Please note that this optimization and unbiasing techniques are specific to
-privunit + miracle and are not general strategies for miracle.
-1. The un-biasing happens by modifying the corresponding p and m.
-2. The optimization for unbiased miracle happens by first choosing the
-range budget of budget for which epsilon_kink > epsilon_target and then
-minimizing the variance or maximizing the corresponding m in this range.
-"""
-
 import numpy as np
 from scipy import stats
 import scipy.special as sc
 
 
-
-def get_unbiased_p_hat_rd(number_candidates, eps, gamma, d):
-  """Get the p_hat_rd to unbias ldp_rd.
-  Args:
-    number_candidates: The number of candidates to be sampled.
-    eps: epsilon.
-    gamma: the threshold.
-    d: dimension of the input.
-  Returns:
-    p_hat: The probability with which the algorithm will sample a unit
-    vector from the shaded spherical cap associated with input.
-  """
-  # Compute the fraction of candidates that lie inside the cap.
-  beta = np.array(range(number_candidates + 1)) / number_candidates
-  exp_eps = np.exp(eps)
-  pi_in = 1 / number_candidates * (exp_eps / (beta * exp_eps + (1 - beta)))
-  p_hat = np.sum(
-      stats.binom.pmf(range(number_candidates + 1),
-                      number_candidates,
-                      sc.betainc((d - 1) / 2, 1 / 2, (1 - gamma ** 2)) / 2) *
-      range(number_candidates + 1) * pi_in)
-
-  return p_hat
-
 def get_unbiased_p_hat(number_candidates, c1, c2, p):
-  """Get the p_hat to unbias miracle.
+  """Get the p_hat to unbias mmrc.
   Args:
     number_candidates: The number of candidates to be sampled.
     c1: The factor that the conditional density of z given x is proportional to
