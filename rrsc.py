@@ -38,5 +38,5 @@ def lossy_DP_rrsc(X, eps, M, k, itr):
         m_sampled = np.random.choice(a=np.arange(M), p=probs)
         if i == 0 and itr == 0:
             print(f"--- {time.time() - start_time:.5f} seconds for each client in RRSC ---")
-        X_perturb[:, i] = codebook[:, m_sampled] #* sigma
+        X_perturb[:, i] = codebook[:, m_sampled]
     return X_perturb
