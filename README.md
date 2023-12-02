@@ -14,10 +14,12 @@ To reproduce the plots in the paper, run `run.ipynb`.
 ## References
 If you find this work useful in your research, please consider citing our paper:
 ```
-@article{isik2023exact,
-  title={Exact Optimality of Communication-Privacy-Utility Tradeoffs in Distributed Mean Estimation},
-  author={Isik, Berivan and Chen, Wei-Ning and Ozgur, Ayfer and Weissman, Tsachy and No, Albert},
-  journal={arXiv preprint arXiv:2306.04924},
-  year={2023}
+@inproceedings{
+isik2023exact,
+title={Exact Optimality of Communication-Privacy-Utility Tradeoffs in Distributed Mean Estimation},
+author={Berivan Isik and Wei-Ning Chen and Ayfer Ozgur and Tsachy Weissman and Albert No},
+booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+year={2023},
+url={https://openreview.net/forum?id=7ETbK9lQd7}
 }
 ```
